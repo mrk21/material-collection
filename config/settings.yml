@@ -1,2 +1,5 @@
 ---
 hoge: <%= ENV.fetch('HOGE') %>
+mail_catcher:
+  host: <%= ENV.fetch('MAIL_CATCHER_HOST') { 'localhost' } %>
+  port: <%= ENV.fetch('MAIL_CATCHER_PORT') { 1025 } %>
