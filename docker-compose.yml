@@ -1,0 +1,63 @@
+---
+version: '3.5'
+services:
+  # @see https://hub.docker.com/_/mysql/
+  db:
+    image: mysql:5.7.22
+    volumes:
+      - db:/var/lib/mysql
+      - ./config/mysql:/etc/mysql/conf.d:ro
+    ports:
+      - $DOCKER_HOST_DB_PORT:3306
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+
+  # @see https://hub.docker.com/r/whilp/ssh-agent/
+  ssh:
+    image: whilp/ssh-agent
+    volumes:
+      - ssh:/ssh
+
+  mail:
+    build: .
+    command: mailcatcher -f --ip=0.0.0.0
+    ports:
+      - 1025
+      - $DOCKER_HOST_MAIL_CATCHER_HTTP_PORT:1080
+
+  app:
+    build: .
+    command: >
+      /bin/bash -c "
+        rm -rf tmp/pids/server.pid &&
+        rails s -p 3000 -b '0.0.0.0'
+      "
+    depends_on:
+      - db
+      - ssh
+      - mail
+    volumes:
+      - .:/app:rw
+      - $HOME:$HOME:ro
+      - ssh:/ssh
+      - cache:/app/tmp/cache
+      - bundle_config:/app/.bundle
+      - bundle:/usr/local/bundle
+    ports:
+      - $DOCKER_HOST_APP_PORT:3000
+    environment:
+      SSH_AUTH_SOCK: /ssh/auth/sock
+      DATABASE_HOST: db
+      MAIL_CATCHER_HOST: mail
+
+volumes:
+  db:
+    driver: local
+  ssh:
+    driver: local
+  bundle_config:
+    driver: local
+  bundle:
+    driver: local
+  cache:
+    driver: local
