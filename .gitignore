@@ -23,3 +23,8 @@
 
 # Ignore local files
 .envrc.local
+.env
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
