@@ -31,5 +31,11 @@ module MaterialCollection
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # @see https://blog.lysender.com/2017/07/rails-5-api-only-enable-cookies-and-sessions/
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore,
+      key: "material_collection_#{Rails.env}_session_id",
+      expire_after: 30.days
   end
 end
