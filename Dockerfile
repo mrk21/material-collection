@@ -2,7 +2,7 @@
 # @see Quickstart: Compose and Rails | Docker Documentation https://docs.docker.com/compose/rails/
 # @see Ruby offical image https://hub.docker.com/_/ruby/
 # @see Docker で apt-get install するときに TERM 系のエラーが出る | まくまく Docker ノート http://maku77.github.io/docker/term-error.html
-FROM ruby:2.6-rc
+FROM ruby:2.5.1
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 

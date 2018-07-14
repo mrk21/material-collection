@@ -1,3 +1,5 @@
+require 'material-collection/console_helper'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -51,4 +53,10 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # console configs
+  console do
+    MaterialCollection::ConsoleHelper.use_settings_reloader
+    MaterialCollection::ConsoleHelper.use_factory_bot
+  end
 end
