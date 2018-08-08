@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :hoge do
     association :user
-    value { 'value' }
+    sequence(:value) { |n| "value #{n}" }
   end
 end

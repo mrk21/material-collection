@@ -35,6 +35,16 @@ gem 'config'
 # Authorization
 gem 'pundit'
 
+# GraphQL
+gem 'graphql'
+gem 'graphiql-rails'
+
+# For graphiql-rails gem
+# @see https://github.com/rmosolgo/graphiql-rails/issues/13
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
