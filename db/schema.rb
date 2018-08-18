@@ -12,12 +12,32 @@
 
 ActiveRecord::Schema.define(version: 2018_07_14_070429) do
 
+  create_table "assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "author_id", null: false
+    t.string "title", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_assets_on_author_id"
+    t.index ["project_id"], name: "index_assets_on_project_id"
+  end
+
   create_table "hoges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hoges_on_user_id"
+  end
+
+  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.string "title", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_projects_on_owner_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -29,4 +49,7 @@ ActiveRecord::Schema.define(version: 2018_07_14_070429) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "assets", "projects"
+  add_foreign_key "assets", "users", column: "author_id"
+  add_foreign_key "projects", "users", column: "owner_id"
 end

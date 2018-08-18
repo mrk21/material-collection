@@ -9,6 +9,21 @@ class InitialMigration < ActiveRecord::Migration[5.2]
       t.index :email, unique: true
     end
 
+    create_table :projects do |t|
+      t.references :owner, null: false, foreign_key: { to_table: :users }
+      t.string :title, null: false
+      t.text :description
+      t.timestamps
+    end
+
+    create_table :assets do |t|
+      t.references :project, null: false, foreign_key: true
+      t.references :author, null: false, foreign_key: { to_table: :users }
+      t.string :title, null: false
+      t.text :description
+      t.timestamps
+    end
+
     # dummy table
     # TODO: It will be removed
     create_table :hoges do |t|

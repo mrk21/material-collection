@@ -6,4 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user = User.create(id: 1, name: 'user', email: 'user@example.com', password: 'password')
+projects = FactoryBot.create_list :project, 10, owner: user
+projects.each do |project|
+  FactoryBot.create_list :asset, 10, project: project
+end
+
 FactoryBot.create_list :hoge, 100

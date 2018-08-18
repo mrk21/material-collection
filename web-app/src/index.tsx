@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 import { ApolloProvider } from "react-apollo";
-import HogeListComponent from './components/HogeListComponent'
 import graphqlClient from './graphqlClient'
+import UserProjectsComponent from './components/UserProjectsComponent'
 
 const RootComponent = (
     <ApolloProvider client={ graphqlClient }>
-        <HogeListComponent />
+        <UserProjectsComponent />
     </ApolloProvider>
 )
 
