@@ -37,6 +37,7 @@ gem 'pundit'
 
 # GraphQL
 gem 'graphql'
+gem 'graphql-batch'
 gem 'graphiql-rails'
 
 # For graphiql-rails gem

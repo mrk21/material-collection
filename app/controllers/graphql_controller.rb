@@ -1,13 +1,15 @@
 class GraphqlController < ApplicationController
   def execute
-    variables = ensure_hash(params[:variables])
-    query = params[:query]
-    operation_name = params[:operationName]
-    context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
-    }
-    result = MaterialCollectionSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = case
+    when params.has_key?('_json')
+      MaterialCollectionSchema.multiplex(
+        params['_json'].map(&method(:schema_params))
+      )
+    else
+      values = schema_params(params)
+      query = value.delete(:query)
+      MaterialCollectionSchema.execute(query, values)
+    end
     render json: result
   rescue => e
     raise e unless Rails.env.development?
@@ -32,6 +34,17 @@ class GraphqlController < ApplicationController
     else
       raise ArgumentError, "Unexpected parameter: #{ambiguous_param}"
     end
+  end
+
+  def schema_params(values)
+    variables = ensure_hash(values[:variables])
+    query = values[:query]
+    operation_name = values[:operationName]
+    context = {
+      # Query context goes here, for example:
+      # current_user: current_user,
+    }
+    { query: query, variables: variables, context: context, operation_name: operation_name }
   end
 
   def handle_error_in_development(e)
