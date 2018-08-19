@@ -7,7 +7,7 @@ class GraphqlController < ApplicationController
       )
     else
       values = schema_params(params)
-      query = value.delete(:query)
+      query = values.delete(:query)
       MaterialCollectionSchema.execute(query, values)
     end
     render json: result

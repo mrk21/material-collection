@@ -26,20 +26,14 @@ class Types::QueryType < Types::BaseObject
   end
 
   def user(id:)
-    Loaders::RecordLoader.for(User).load(id).then do |user|
-      user
-    end
+    Loaders::RecordLoader.for(User).load(id)
   end
 
   def user_projects(user_id:)
-    Loaders::RecordAssociationLoader.for(User, :projects).load(user_id).then do |projects|
-      projects
-    end
+    Loaders::RecordAssociationLoader.for(User, :projects).load(user_id)
   end
 
   def project_assets(project_id:)
-    Loaders::RecordAssociationLoader.for(Project, :assets).load(project_id).then do |assets|
-      assets
-    end
+    Loaders::RecordAssociationLoader.for(Project, :assets).load(project_id)
   end
 end

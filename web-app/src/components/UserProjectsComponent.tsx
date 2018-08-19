@@ -7,7 +7,7 @@ export const UserProjectsComponent = () => (
     <GetUserProjectsQuery query={ GetUserProjects } variables={ { userId: '1' } } >
         {({ loading, data, error }) => {
             if (loading) return <div>loading...</div>
-            if (error) return <div>error!</div>
+            if (error) return <div>{ error.toString() }</div>
             if (!data) return <div>projects are empty</div>
             return (
                 data.userProjects.map((project) => (
@@ -19,7 +19,7 @@ export const UserProjectsComponent = () => (
                                 <GetUserQuery query={ GetUser } variables={ { id: project.ownerId } } >
                                     {({ loading, data, error }) => {
                                         if (loading) return <div>loading...</div>
-                                        if (error) return <div>error!</div>
+                                        if (error) return <div>{ error.toString() }</div>
                                         if (!data) return <div>owner is nothing</div>
                                         return (
                                             <div>
@@ -37,7 +37,7 @@ export const UserProjectsComponent = () => (
                                 <GetProjectAssetsQuery query={ GetProjectAssets } variables={ { projectId: project.id } }>
                                     {({ loading, data, error }) => {
                                         if (loading) return <div>loading...</div>
-                                        if (error) return <div>error!</div>
+                                        if (error) return <div>{ error.toString() }</div>
                                         if (!data) return <div>posted assets are empty</div>
                                         return (
                                             data.projectAssets.map((asset) => (
@@ -49,7 +49,7 @@ export const UserProjectsComponent = () => (
                                                             <GetUserQuery query={ GetUser } variables={ { id: asset.authorId } } >
                                                                 {({ loading, data, error }) => {
                                                                     if (loading) return <div>loading...</div>
-                                                                    if (error) return <div>error!</div>
+                                                                    if (error) return <div>{ error.toString() }</div>
                                                                     if (!data) return <div>author is nothing</div>
                                                                     return (
                                                                         <div>
