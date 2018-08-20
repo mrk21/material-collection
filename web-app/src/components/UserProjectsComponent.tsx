@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import GetUserProjects, { GetUserProjectsQuery } from '../graphql/GetUserProjects'
 import GetUser, { GetUserQuery } from '../graphql/GetUser'
 import GetProjectAssets, { GetProjectAssetsQuery } from '../graphql/GetProjectAssets'
@@ -13,6 +14,7 @@ export const UserProjectsComponent = () => (
                 data.userProjects.map((project) => (
                     <div>
                         <p style={ { fontSize: '150%', fontWeight: 'bold' } }>#{ project.id } { project.title }</p>
+                        <p><Link to={ `/projects/${ project.id }` }>detail</Link></p>
                         <div style={ { marginLeft: '20px' } }>
                             <p style={ { fontWeight: 'bold' } }>Owner:</p>
                             <div style={ { marginLeft: '20px' } }>

@@ -22,6 +22,7 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     contentBase: path.resolve(__dirname),
+    historyApiFallback: true,
     proxy: {
       '/graphql': `http://localhost:${process.env.DOCKER_HOST_APP_PORT}`
     }

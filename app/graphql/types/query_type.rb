@@ -21,6 +21,11 @@ class Types::QueryType < Types::BaseObject
     argument :projectId, String, required: true
   end
 
+  field :project, Types::ProjectType, null: false do
+    description 'A project'
+    argument :id, String, required: true
+  end
+
   def hoges
     Hoge.all
   end
@@ -35,5 +40,9 @@ class Types::QueryType < Types::BaseObject
 
   def project_assets(project_id:)
     Loaders::RecordAssociationLoader.for(Project, :assets).load(project_id)
+  end
+
+  def project(id:)
+    Loaders::RecordLoader.for(Project).load(id)
   end
 end

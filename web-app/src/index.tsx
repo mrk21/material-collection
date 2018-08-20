@@ -2,11 +2,11 @@ import * as React from 'react'
 import { render } from 'react-dom'
 import { ApolloProvider } from "react-apollo";
 import graphqlClient from './graphqlClient'
-import UserProjectsComponent from './components/UserProjectsComponent'
+import AppComponent from './components/AppComponent'
 
 const RootComponent = (
     <ApolloProvider client={ graphqlClient }>
-        <UserProjectsComponent />
+        <AppComponent />
     </ApolloProvider>
 )
 
