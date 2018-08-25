@@ -1,6 +1,7 @@
 
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
+import { Link } from 'react-router-dom'
 import GetProject, { GetProjectQuery } from '../graphql/GetProject'
 import GetUser, { GetUserQuery } from '../graphql/GetUser'
 import GetProjectAssets, { GetProjectAssetsQuery } from '../graphql/GetProjectAssets'
@@ -13,10 +14,12 @@ export const ProjectComponent = (props: ProjectComponentProps) => (
             if (loading) return <div>loading...</div>
             if (error) return <div>{ error.toString() }</div>
             if (!data) return <div>project is not found</div>
-            console.log(loading, data, error)
             return (
                 <div>
                     <p style={ { fontSize: '150%', fontWeight: 'bold' } }>#{ data.project.id } { data.project.title }</p>
+                    <p>{ data.project.description }</p>
+                    <Link to={ `/` }>back</Link>&nbsp;
+                    <Link to={ `/projects/${ data.project.id }/edit` }>edit</Link>
                     <div style={ { marginLeft: '20px' } }>
                         <p style={ { fontWeight: 'bold' } }>Owner:</p>
                         <div style={ { marginLeft: '20px' } }>
