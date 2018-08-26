@@ -3,7 +3,9 @@ import { Mutation } from "react-apollo";
 import Project from '../entities/Project'
 
 export interface UpdateProjectData {
-    updateProject: Project
+    updateProject: {
+        project: Project
+    }
 }
 
 export interface UpdateProjectVariables {

@@ -6,6 +6,10 @@ class Types::QueryType < Types::BaseObject
      description 'All hoges'
   end
 
+  field :logged_in_user, Types::UserType, null: false do
+     description 'A logged in user'
+  end
+
   field :user, Types::UserType, null: false do
     description 'A user'
     argument :id, String, required: true
@@ -28,6 +32,10 @@ class Types::QueryType < Types::BaseObject
 
   def hoges
     Hoge.all
+  end
+
+  def logged_in_user
+    context[:current_user][]
   end
 
   def user(id:)
