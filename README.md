@@ -66,18 +66,40 @@ Or you can connect to it by your RDB client with the settings listed below:
 
 ## Code Formatting & Linting
 
+### Ruby codes
+
 Ruby codes of this project can be formatted/linted by RuboCop:
 
-**check**
+**Check**
 
 ```bash
 $ docker-compose run app rubocop # or docker-compose exec ...
 ```
 
-**check & auto collect**
+**Check & auto collect**
 
 ```bash
 $ docker-compose run app rubocop -a # or docker-compose exec ...
+```
+
+**Refer to**
+
+- [RuboCop: The Ruby Linter that Serves and Protects](https://rubocop.readthedocs.io/en/latest/)
+
+### TypeScript codes
+
+TypeScript codes of this project can be formatted/linted by ESLint/Prettier:
+
+**Check**
+
+```bash
+$ docker-compose run webapp npm run lint # or docker-compose exec ...
+```
+
+**Check & auto collect**
+
+```bash
+$ docker-compose run webapp npm run lint:fix # or docker-compose exec ...
 ```
 
 ## More documentation
