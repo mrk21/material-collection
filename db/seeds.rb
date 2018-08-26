@@ -11,5 +11,3 @@ projects = FactoryBot.create_list :project, 10, owner: user
 projects.each do |project|
   FactoryBot.create_list :asset, 10, project: project
 end
-
-FactoryBot.create_list :hoge, 100

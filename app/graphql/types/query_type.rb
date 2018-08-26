@@ -1,11 +1,4 @@
 class Types::QueryType < Types::BaseObject
-  # Add root-level fields here.
-  # They will be entry points for queries on your schema.
-
-  field :hoges, [Types::HogeType], null: false do
-     description 'All hoges'
-  end
-
   field :logged_in_user, Types::UserType, null: false do
      description 'A logged in user'
   end
@@ -28,10 +21,6 @@ class Types::QueryType < Types::BaseObject
   field :project, Types::ProjectType, null: false do
     description 'A project'
     argument :id, String, required: true
-  end
-
-  def hoges
-    Hoge.all
   end
 
   def logged_in_user

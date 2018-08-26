@@ -23,13 +23,5 @@ class InitialMigration < ActiveRecord::Migration[5.2]
       t.text :description
       t.timestamps
     end
-
-    # dummy table
-    # TODO: It will be removed
-    create_table :hoges do |t|
-      t.references :user, null: false
-      t.string :value
-      t.timestamps
-    end
   end
 end
