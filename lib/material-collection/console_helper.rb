@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Helper methods for rails console
 #
 # You need to add the following code to +config/environments/<env>.rb+ if you want to use this helper:
@@ -12,21 +14,23 @@
 module MaterialCollection::ConsoleHelper
   # @see https://docs.ruby-lang.org/ja/latest/method/Object/c/TOPLEVEL_BINDING.html
   # @see https://docs.ruby-lang.org/ja/latest/class/Binding.html#I_RECEIVER
-  @@main_object = TOPLEVEL_BINDING.receiver
+  MAIN_OBJECT = TOPLEVEL_BINDING.receiver
 
   class << self
     # Supply the following functions:
     # * +reload!+ is changed to execute with +Settings.reload!+
     def use_settings_reloader
-      class << @@main_object
-        prepend Module.new {
-          def reload!
-            result = super
-            puts 'Settings reloading...'
-            Settings.reload!
-            result
+      class << MAIN_OBJECT
+        prepend(
+          Module.new do
+            def reload!
+              result = super
+              puts 'Settings reloading...'
+              Settings.reload!
+              result
+            end
           end
-        }
+        )
       end
     end
 
@@ -36,16 +40,18 @@ module MaterialCollection::ConsoleHelper
     def use_factory_bot
       require 'factory_bot_rails'
 
-      class << @@main_object
+      class << MAIN_OBJECT
         include FactoryBot::Syntax::Methods
-        prepend Module.new {
-          def reload!
-            result = super
-            puts 'FactoryBot reloading...'
-            FactoryBot.reload
-            result
+        prepend(
+          Module.new do
+            def reload!
+              result = super
+              puts 'FactoryBot reloading...'
+              FactoryBot.reload
+              result
+            end
           end
-        }
+        )
       end
     end
   end

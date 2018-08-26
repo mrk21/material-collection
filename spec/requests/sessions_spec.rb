@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :request do
+RSpec.describe 'Sessions', type: :request do
   let!(:user) { create :user, email: 'user@example.com', password: 'password' }
 
   describe 'POST /session' do
@@ -62,9 +64,9 @@ RSpec.describe "Sessions", type: :request do
     end
 
     context 'when access after logged in' do
-      before {
+      before do
         post session_path, params: { user: { email: 'user@example.com', password: 'password' } }
-      }
+      end
 
       it 'returns logged in user' do
         is_expected.to eq 200
@@ -90,9 +92,9 @@ RSpec.describe "Sessions", type: :request do
     end
 
     context 'when access after logged in' do
-      before {
+      before do
         post session_path, params: { user: { email: 'user@example.com', password: 'password' } }
-      }
+      end
 
       it 'returns 200' do
         is_expected.to eq 204

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Types::MutationType < Types::BaseObject
   field :update_project, mutation: Mutations::UpdateProject
   field :login_user, mutation: Mutations::LoginUser

@@ -1,22 +1,34 @@
+# frozen_string_literal: true
+
 class GraphqlController < ApplicationController
   def execute
     result = case
-    when params.has_key?('_json')
-      MaterialCollectionSchema.multiplex(
-        params['_json'].map(&method(:schema_params))
-      )
-    else
-      values = schema_params(params)
-      query = values.delete(:query)
-      MaterialCollectionSchema.execute(query, values)
-    end
+             when batch_query.present? then execute_batch_query
+             else execute_one_query
+             end
     render json: result
-  rescue => e
+  rescue StandardError => e
     raise e unless Rails.env.development?
     handle_error_in_development e
   end
 
   private
+
+  def batch_query
+    params['_json']
+  end
+
+  def execute_batch_query
+    MaterialCollectionSchema.multiplex(
+      batch_query.to_a.map(&method(:schema_params))
+    )
+  end
+
+  def execute_one_query
+    values = schema_params(params)
+    query = values.delete(:query)
+    MaterialCollectionSchema.execute(query, values)
+  end
 
   # Handle form data, JSON body, or a blank value
   def ensure_hash(ambiguous_param)

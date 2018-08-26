@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'material-collection/console_helper'
 
 Rails.application.configure do

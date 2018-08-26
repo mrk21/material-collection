@@ -22,11 +22,11 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    host: `${process.env.DEV_SERVER_HOST}`,
+    host: `${process.env.DEV_SERVER_HOST || '127.0.0.1'}`,
     contentBase: path.resolve(__dirname),
     historyApiFallback: true,
     proxy: {
-      '/graphql': `${process.env.APP_URL}`
+      '/graphql': `${process.env.APP_URL || 'http://localhost:3000'}`
     }
   }
 };

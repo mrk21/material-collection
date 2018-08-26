@@ -64,6 +64,22 @@ Or you can connect to it by your RDB client with the settings listed below:
 - Password `<no password>`
 - Database `material-collection_development`
 
+## Code Formatting & Linting
+
+Ruby codes of this project can be formatted/linted by RuboCop:
+
+**check**
+
+```bash
+$ docker-compose run app rubocop # or docker-compose exec ...
+```
+
+**check & auto collect**
+
+```bash
+$ docker-compose run app rubocop -a # or docker-compose exec ...
+```
+
 ## More documentation
 
 - https://mrk21.kibe.la/shared/entries/144381ef-2b22-4908-acab-d9925cc9a997

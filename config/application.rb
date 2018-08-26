@@ -1,19 +1,21 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
-require "rails"
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "active_storage/engine"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "action_cable/engine"
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
+require 'action_cable/engine'
 
 # For graphiql-rails gem
 # @see https://github.com/rmosolgo/graphiql-rails/issues/13
-require "sprockets/railtie"
+require 'sprockets/railtie'
 
 # require "rails/test_unit/railtie"
 
@@ -39,7 +41,7 @@ module MaterialCollection
     # @see https://blog.lysender.com/2017/07/rails-5-api-only-enable-cookies-and-sessions/
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore,
-      key: "material_collection_#{Rails.env}_session_id",
-      expire_after: 30.days
+                          key: "material_collection_#{Rails.env}_session_id",
+                          expire_after: 30.days
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Loaders::RecordAssociationLoader < GraphQL::Batch::Loader
   def initialize(model, association)
     @model = model

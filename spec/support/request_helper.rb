@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RequestHelper
   extend ActiveSupport::Concern
 
@@ -15,7 +17,7 @@ module RequestHelper
           }
         end
 
-        instance_eval &block
+        instance_eval(&block)
       end
 
       context 'without authentication' do

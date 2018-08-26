@@ -1,0 +1,52 @@
+---
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/*'
+
+# Style/FrozenStringLiteralComment:
+#   Enabled: false
+ 
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 20
+  Exclude:
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'spec/support/**/*'
+
+Bundler/OrderedGems:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false

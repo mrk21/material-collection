@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def show
     render json: { user: { id: current_user.to_param, email: current_user.email } }

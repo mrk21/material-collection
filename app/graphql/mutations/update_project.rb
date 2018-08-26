@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Mutations::UpdateProject < GraphQL::Schema::Mutation
   argument :id, String, required: true
   argument :title, String, required: true

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Types::QueryType < Types::BaseObject
   field :logged_in_user, Types::UserType, null: false do
-     description 'A logged in user'
+    description 'A logged in user'
   end
 
   field :user, Types::UserType, null: false do
@@ -9,8 +11,8 @@ class Types::QueryType < Types::BaseObject
   end
 
   field :userProjects, [Types::ProjectType], null: false do
-     description 'Projects created by the user'
-     argument :userId, String, required: true
+    description 'Projects created by the user'
+    argument :userId, String, required: true
   end
 
   field :projectAssets, [Types::AssetType], null: false do
