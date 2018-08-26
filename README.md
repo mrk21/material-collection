@@ -11,6 +11,19 @@ This app is for technology research such as API system(GraphQL, batch requesting
 - Docker `>= 18.06.0-ce`
 - direnv `>= 2.17.0`
 
+### Installation
+
+The almost dependency packages installed on Docker environment, so all you need to do is install Docker and direnv.
+
+#### for mac
+
+- [Docker](https://www.docker.com/)
+  1. Install [Docker for Mac](https://www.docker.com/products/docker-desktop)
+- [direnv](https://github.com/direnv/direnv)
+  1. Install [Homebrew](https://brew.sh/index_ja)
+  2. Enter `brew install direnv` command
+  3. Describe boot up settings to `.bashrc` or `.zshrc`
+
 ## Setup
 
 ```bash
@@ -22,8 +35,9 @@ $ vi .env
 $ docker-compose build
 $ docker-compose run app bundle install
 $ docker-compose run app rails db:setup
+$ docker-compose run webapp npm install
 $ docker-compose up
-$ open http://localhost:$DOCKER_HOST_APP_PORT
+$ open http://localhost:$DOCKER_HOST_WEBAPP_PORT
 ```
 
 ## Test

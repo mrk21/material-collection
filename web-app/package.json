@@ -16,6 +16,7 @@
     "apollo-cache-inmemory": "^1.2.8",
     "apollo-client": "^2.4.0",
     "apollo-link-batch-http": "^1.2.2",
+    "dotenv": "^6.0.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "react": "^16.4.2",

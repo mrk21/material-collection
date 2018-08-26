@@ -3,5 +3,6 @@
 # If you used Docker, then you must set the following environment variables!
 #-------------------------------------------------------------------------------
 export DOCKER_HOST_APP_PORT=3000               # You can access to Rails by http://127.0.0.1:${DOCKER_HOST_APP_PORT} on the host.
+export DOCKER_HOST_WEBAPP_PORT=8080            # You can access to WebApp by http://127.0.0.1:${DOCKER_HOST_WEBAPP_PORT} on the host.
 export DOCKER_HOST_DB_PORT=3306                # You can access to MySQL by tcp://root:@127.0.0.1:${DOCKER_HOST_DB_PORT} on the host.
 export DOCKER_HOST_MAIL_CATCHER_HTTP_PORT=1080 # You can read mail on MailCatcher by http://127.0.0.1:${DOCKER_HOST_MAIL_CATCHER_HTTP_PORT} on the host.

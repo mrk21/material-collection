@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config();
 
 module.exports = {
   mode: 'development',
@@ -21,10 +22,11 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
+    host: `${process.env.DEV_SERVER_HOST}`,
     contentBase: path.resolve(__dirname),
     historyApiFallback: true,
     proxy: {
-      '/graphql': `http://localhost:${process.env.DOCKER_HOST_APP_PORT}`
+      '/graphql': `${process.env.APP_URL}`
     }
   }
 };
