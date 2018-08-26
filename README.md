@@ -1,24 +1,55 @@
-# README
+# Material Collection
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is for technology research such as API system(GraphQL, batch requesting), admin app constructed by SPA, etc..
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+- Ruby `= 2.5.1`
+- Rails `= 5.2.0`
+- MySQL `= 5.7.22`
+- Node.js `= 10.8.0`
+- Docker `>= 18.06.0-ce`
+- direnv `>= 2.17.0`
 
-* System dependencies
+## Setup
 
-* Configuration
+```bash
+$ cp .envrc.local.sample .envrc.local
+$ vi .envrc.local
+$ direnv allow .
+$ cp .env.sample .env
+$ vi .env
+$ docker-compose build
+$ docker-compose run app bundle install
+$ docker-compose run app rails db:setup
+$ docker-compose up
+$ open http://localhost:$DOCKER_HOST_APP_PORT
+```
 
-* Database creation
+## Test
 
-* Database initialization
+You can execute tests by the commands listed below:
 
-* How to run the test suite
+```bash
+$ docker-compose run app rspec # or docker-compose exec ...
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## RDB connection
 
-* Deployment instructions
+You can connect to the RDB by the commands listed below:
 
-* ...
+```bash
+$ docker-compose run db mysql # or docker-compose exec ...
+```
+
+Or you can connect to it by your RDB client with the settings listed below:
+
+- Host `127.0.0.1`
+- Port `<value of $DOCKER_HOST_DB_PORT>`
+- User `root`
+- Password `<no password>`
+- Database `material-collection_development`
+
+## More documentation
+
+- https://mrk21.kibe.la/shared/entries/144381ef-2b22-4908-acab-d9925cc9a997
