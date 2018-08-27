@@ -32,6 +32,8 @@ $ vi .envrc.local
 $ direnv allow .
 $ cp .env.sample .env
 $ vi .env
+$ cp web-app/.env.sample web-app/.env
+$ vi web-app/.env
 $ docker-compose build
 $ docker-compose run app bundle install
 $ docker-compose run app rails db:setup
@@ -88,7 +90,7 @@ $ docker-compose run app rubocop -a # or docker-compose exec ...
 
 ### TypeScript codes
 
-TypeScript codes of this project can be formatted/linted by ESLint/Prettier:
+TypeScript codes of this project can be formatted/linted by TSLint/Prettier:
 
 **Check**
 
