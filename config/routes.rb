@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     post '/graphql(/:opinfo)', to: 'graphql#execute', constraints: { opinfo: %r{[\w/]*} }
     resource :session, only: %i[show create destroy]
   end
-  mount GraphiQL::Rails::Engine, at: '/dev/graphiql', graphql_path: '/graphql'
+  mount GraphiQL::Rails::Engine, at: '/dev/graphiql', graphql_path: '/api/graphql'
 end
