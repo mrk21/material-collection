@@ -26,7 +26,7 @@ module.exports = {
     contentBase: path.resolve(__dirname),
     historyApiFallback: true,
     proxy: {
-      '/graphql': `${process.env.APP_URL || 'http://localhost:3000'}`
+      '/api/graphql': `${process.env.APP_URL || 'http://localhost:3000'}`
     }
   }
 };

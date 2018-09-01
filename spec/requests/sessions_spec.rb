@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Sessions', type: :request do
   let!(:user) { create :user, email: 'user@example.com', password: 'password' }
 
-  describe 'POST /session' do
+  describe 'POST /api/session' do
     let :params do
       {
         user: {
@@ -50,7 +50,7 @@ RSpec.describe 'Sessions', type: :request do
     end
   end
 
-  describe 'GET /session' do
+  describe 'GET /api/session' do
     context 'when access before logged in' do
       it 'returns 401' do
         is_expected.to eq 401
@@ -81,7 +81,7 @@ RSpec.describe 'Sessions', type: :request do
     end
   end
 
-  describe 'DELETE /session' do
+  describe 'DELETE /api/session' do
     context 'when access before logged in' do
       it 'returns 200' do
         is_expected.to eq 204
