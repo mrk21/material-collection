@@ -3,6 +3,10 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
     - 'bin/*'
+    - 'web-app/*'
+    - 'tmp/*'
+    - 'log/*'
+    - 'storage/*'
 
 Metrics/LineLength:
   Max: 120
@@ -45,5 +49,11 @@ Style/EmptyCaseCondition:
 Style/TrailingCommaInHashLiteral:
   Enabled: false
 
+Style/ClassVars:
+  Enabled: false
+
 Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
+Naming/PredicateName:
   Enabled: false

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe SessionsController, type: :routing do
   describe '[GET|POST] /api/graphql(/:opinfo)' do
-    [:get, :post].each do |method|
+    %i[get post].each do |method|
       context "when http method was #{method.to_s.upcase}" do
         context 'without `:opinfo` param' do
           it 'matches' do

@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
-class Queries::Project < GraphQL::Schema::Resolver
+class Queries::Project < Queries::Base
   description 'A project'
   argument :id, String, required: true
   type Types::ProjectType, null: false
 
   def resolve(id:)
-    Loaders::RecordLoader.for(Project).load(id)
+    authenticate!
+    Loaders::RecordLoader.for(Project).load(id).then do |project|
+      authorize project, :show?
+      project
+    end
   end
 end

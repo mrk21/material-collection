@@ -16,7 +16,7 @@ class Loaders::RecordLoader < GraphQL::Batch::Loader
     end
 
     ids.each do |id|
-      fulfill id, Errors::NotFoundError.new("id = #{id}") unless fulfilled?(id)
+      fulfill id, Errors::NotFound.new("id = #{id}") unless fulfilled?(id)
     end
   end
 end

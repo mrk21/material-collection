@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Errors::NotFoundError < GraphQL::ExecutionError
+class Errors::NotFound < Errors::Base
   def initialize(where)
     super "Not found(#{where})"
   end
