@@ -4,7 +4,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const link = new BatchHttpLink({
   uri: '/api/graphql',
-  batchMax: 50,
+  batchInterval: 10,
+  batchMax: 20,
   fetch: (uri: string, options: any) => {
     const requests = JSON.parse(options.body)
     const opname = requests[0].operationName

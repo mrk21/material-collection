@@ -2,10 +2,11 @@
 
 class Queries::UserProjects < GraphQL::Schema::Resolver
   description 'Projects created by the user'
+  argument :pagination, Types::OffsetBasedPaginationType::PageArgumentType, required: false, default_value: { page: 1, per: 20 }
   argument :userId, String, required: true
-  type [Types::ProjectType], null: false
+  type Types::OffsetBasedPaginationType[Types::ProjectType], null: false
 
-  def resolve(user_id:)
-    Loaders::RecordAssociationLoader.for(User, :projects).load(user_id)
+  def resolve(pagination:, user_id:)
+    User.find(user_id).projects.page(pagination[:page]).per(pagination[:per])
   end
 end

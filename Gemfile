@@ -48,6 +48,9 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 
+# Pagination
+gem 'kaminari'
+
 # Formatter & Linter
 gem 'rubocop', require: false
 

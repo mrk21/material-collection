@@ -3,7 +3,9 @@ import { Query } from 'react-apollo'
 import Asset from '../entities/Asset'
 
 export interface GetProjectAssetsData {
-  projectAssets: Array<Asset>
+  projectAssets: {
+    nodes: Array<Asset>
+  }
 }
 
 export interface GetProjectAssetsVariables {
@@ -13,10 +15,12 @@ export interface GetProjectAssetsVariables {
 export const GetProjectAssets = gql`
   query GetProjectAssets($projectId: String!) {
     projectAssets(projectId: $projectId) {
-      id
-      authorId
-      title
-      description
+      nodes {
+        id
+        authorId
+        title
+        description
+      }
     }
   }
 `

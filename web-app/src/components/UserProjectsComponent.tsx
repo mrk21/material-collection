@@ -14,7 +14,7 @@ export const UserProjectsComponent = () => (
       if (loading) return <div>loading...</div>
       if (error) return <div>{error.toString()}</div>
       if (!data) return <div>projects are empty</div>
-      return data.userProjects.map(project => (
+      return data.userProjects.nodes.map(project => (
         <div>
           <p style={{ fontSize: '150%', fontWeight: 'bold' }}>
             #{project.id} {project.title}
@@ -53,7 +53,7 @@ export const UserProjectsComponent = () => (
                   if (loading) return <div>loading...</div>
                   if (error) return <div>{error.toString()}</div>
                   if (!data) return <div>posted assets are empty</div>
-                  return data.projectAssets.map(asset => (
+                  return data.projectAssets.nodes.map(asset => (
                     <div>
                       <p>
                         #{asset.id} {asset.title}
