@@ -4,7 +4,9 @@ module BaseResolver
   extend ActiveSupport::Concern
 
   def current_user
-    context[:current_user]
+    context[:current_user][]
+  rescue UnauthenticatedError
+    raise NotAuthenticated
   end
 
   def session

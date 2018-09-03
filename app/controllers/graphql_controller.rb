@@ -54,7 +54,7 @@ class GraphqlController < ApplicationController
     operation_name = values[:operationName]
     context = {
       session: method(:session),
-      current_user: current_user
+      current_user: method(:current_user)
     }
     { query: query, variables: variables, context: context, operation_name: operation_name }
   end
