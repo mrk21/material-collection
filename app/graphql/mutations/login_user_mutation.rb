@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Mutations::LoginUser < Mutations::Base
+class Mutations::LoginUserMutation < Mutations::BaseMutation
   argument :email, String, required: true
   argument :password, String, required: true
 
@@ -8,7 +8,7 @@ class Mutations::LoginUser < Mutations::Base
 
   def resolve(email:, password:)
     user = User.find_by(email: email)
-    raise Errors::NotAuthenticated unless user.present? && user.authenticate(password)
+    raise Errors::NotAuthenticatedError unless user.present? && user.authenticate(password)
     session[:user_id] = user.id
     { user: user }
   end

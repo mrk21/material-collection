@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Errors::NotAuthenticated < Errors::Base
+class Errors::NotAuthenticatedError < Errors::BaseError
   def initialize
     super 'Not authenticated!'
   end

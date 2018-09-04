@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Types::MutationType < Types::BaseObject
-  field :update_project, mutation: Mutations::UpdateProject
-  field :login_user, mutation: Mutations::LoginUser
-  field :logout_user, mutation: Mutations::LogoutUser
+  field :update_project, mutation: Mutations::UpdateProjectMutation
+  field :login_user, mutation: Mutations::LoginUserMutation
+  field :logout_user, mutation: Mutations::LogoutUserMutation
 end

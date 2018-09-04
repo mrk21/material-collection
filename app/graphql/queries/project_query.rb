@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Queries::Project < Queries::Base
+class Queries::ProjectQuery < Queries::BaseQuery
   description 'A project'
   argument :id, String, required: true
   type Types::ProjectType, null: false

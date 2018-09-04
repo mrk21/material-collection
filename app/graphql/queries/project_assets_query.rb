@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Queries::ProjectAssets < Queries::Base
+class Queries::ProjectAssetsQuery < Queries::BaseQuery
   description 'Assets posted to the project'
 
   argument :projectId, String, required: true

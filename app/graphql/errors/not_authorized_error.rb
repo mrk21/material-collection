@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Errors::NotAuthorized < Errors::Base
+class Errors::NotAuthorizedError < Errors::BaseError
   def initialize
     super 'Not authorized!'
   end

@@ -5,7 +5,8 @@ module BaseResolver
 
   def current_user
     context[:current_user][]
-  rescue UnauthenticatedError
+  rescue UnauthenticatedError => e
+    pp e
     raise NotAuthenticated
   end
 
@@ -21,7 +22,7 @@ module BaseResolver
     Pundit.authorize(current_user, record, query)
   rescue Pundit::NotAuthorizedError => e
     pp e
-    raise Errors::NotAuthorized
+    raise Errors::NotAuthorizedError
   end
 
   def policy(record)

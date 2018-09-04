@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Queries::UserProjects < Queries::Base
+class Queries::UserProjectsQuery < Queries::BaseQuery
   description 'Projects created by the user'
 
   argument :userId, String, required: true

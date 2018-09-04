@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Queries::Base < GraphQL::Schema::Resolver
+class Queries::BaseQuery < GraphQL::Schema::Resolver
   include BaseResolver
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Mutations::LogoutUser < Mutations::Base
+class Mutations::LogoutUserMutation < Mutations::BaseMutation
   field :ok, Boolean, null: true
 
   def resolve

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Queries::LoggedInUser < Queries::Base
+class Queries::LoggedInUserQuery < Queries::BaseQuery
   description 'A logged in user'
   type Types::UserType, null: false
 

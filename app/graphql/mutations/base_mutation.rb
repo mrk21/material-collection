@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Mutations::Base < GraphQL::Schema::Mutation
+class Mutations::BaseMutation < GraphQL::Schema::Mutation
   include BaseResolver
 end
