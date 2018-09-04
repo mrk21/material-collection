@@ -6,8 +6,10 @@ class Loaders::RecordLoader < GraphQL::Batch::Loader
   end
 
   def load(id)
-    id = id.to_i
-    super
+    super.then do |fetched|
+      raise Errors::NotFoundError, "id = #{id}" if fetched.nil?
+      fetched
+    end
   end
 
   def perform(ids)
@@ -16,7 +18,7 @@ class Loaders::RecordLoader < GraphQL::Batch::Loader
     end
 
     ids.each do |id|
-      fulfill id, Errors::NotFoundError.new("id = #{id}") unless fulfilled?(id)
+      fulfill id, nil unless fulfilled?(id)
     end
   end
 end

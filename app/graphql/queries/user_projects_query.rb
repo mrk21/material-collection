@@ -11,7 +11,8 @@ class Queries::UserProjectsQuery < Queries::BaseQuery
 
   def resolve(user_id:, pagination:)
     authenticate!
-    Loaders::RecordLoader.for(User).load(user_id).then do |user|
+    Loaders::RecordLoader.for(User).load(user_id.to_i).then do |user|
+      authorize user, :show?
       policy_scope(user.projects).page(pagination[:page]).per(pagination[:per])
     end
   end

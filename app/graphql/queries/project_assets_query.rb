@@ -11,7 +11,8 @@ class Queries::ProjectAssetsQuery < Queries::BaseQuery
 
   def resolve(project_id:, pagination:)
     authenticate!
-    Loaders::RecordLoader.for(Project).load(project_id).then do |project|
+    Loaders::RecordLoader.for(Project).load(project_id.to_i).then do |project|
+      authorize project, :show?
       policy_scope(project.assets).page(pagination[:page]).per(pagination[:per])
     end
   end

@@ -7,7 +7,7 @@ class Queries::UserQuery < Queries::BaseQuery
 
   def resolve(id:)
     authenticate!
-    Loaders::RecordLoader.for(User).load(id).then do |user|
+    Loaders::RecordLoader.for(User).load(id.to_i).then do |user|
       authorize user, :show?
       user
     end

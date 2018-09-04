@@ -7,7 +7,7 @@ class Queries::ProjectQuery < Queries::BaseQuery
 
   def resolve(id:)
     authenticate!
-    Loaders::RecordLoader.for(Project).load(id).then do |project|
+    Loaders::RecordLoader.for(Project).load(id.to_i).then do |project|
       authorize project, :show?
       project
     end
