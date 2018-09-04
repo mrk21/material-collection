@@ -2,12 +2,12 @@
 
 class Queries::UserQuery < Queries::BaseQuery
   description 'A user'
-  argument :id, String, required: true
+  argument :id, Types::IDStringType, required: true
   type Types::UserType, null: false
 
   def resolve(id:)
     authenticate!
-    Loaders::RecordLoader.for(User).load(id.to_i).then do |user|
+    Loaders::RecordLoader.for(User).load(id).then do |user|
       authorize user, :show?
       user
     end

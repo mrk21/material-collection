@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Mutations::UpdateProjectMutation < Mutations::BaseMutation
-  argument :id, String, required: true
+  argument :id, Types::IDStringType, required: true
   argument :title, String, required: true
   argument :description, String, required: false
 

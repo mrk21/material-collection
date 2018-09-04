@@ -11,7 +11,7 @@ export interface GetUserVariables {
 }
 
 export const GetUser = gql`
-  query GetUser($id: String!) {
+  query GetUser($id: IDString!) {
     user(id: $id) {
       id
       name

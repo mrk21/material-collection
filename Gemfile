@@ -51,6 +51,9 @@ gem 'coffee-rails'
 # Pagination
 gem 'kaminari'
 
+# For encrypting/decrypting ID
+gem 'hashids'
+
 # Formatter & Linter
 gem 'rubocop', require: false
 

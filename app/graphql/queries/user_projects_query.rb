@@ -3,7 +3,7 @@
 class Queries::UserProjectsQuery < Queries::BaseQuery
   description 'Projects created by the user'
 
-  argument :userId, String, required: true
+  argument :userId, Types::IDStringType, required: true
   argument :pagination, Types::OffsetBasedPaginationType::PageArgumentType, required: false,
                                                                             default_value: { page: 1, per: 20 }
 
@@ -11,7 +11,9 @@ class Queries::UserProjectsQuery < Queries::BaseQuery
 
   def resolve(user_id:, pagination:)
     authenticate!
-    Loaders::RecordLoader.for(User).load(user_id.to_i).then do |user|
+    pp '&'*100
+    pp user_id
+    Loaders::RecordLoader.for(User).load(user_id).then do |user|
       authorize user, :show?
       policy_scope(user.projects).page(pagination[:page]).per(pagination[:per])
     end

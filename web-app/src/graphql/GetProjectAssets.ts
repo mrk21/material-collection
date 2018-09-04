@@ -13,7 +13,7 @@ export interface GetProjectAssetsVariables {
 }
 
 export const GetProjectAssets = gql`
-  query GetProjectAssets($projectId: String!) {
+  query GetProjectAssets($projectId: IDString!) {
     projectAssets(projectId: $projectId) {
       nodes {
         id

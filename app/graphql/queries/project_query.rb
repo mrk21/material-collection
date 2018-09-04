@@ -2,12 +2,12 @@
 
 class Queries::ProjectQuery < Queries::BaseQuery
   description 'A project'
-  argument :id, String, required: true
+  argument :id, Types::IDStringType, required: true
   type Types::ProjectType, null: false
 
   def resolve(id:)
     authenticate!
-    Loaders::RecordLoader.for(Project).load(id.to_i).then do |project|
+    Loaders::RecordLoader.for(Project).load(id).then do |project|
       authorize project, :show?
       project
     end

@@ -11,7 +11,7 @@ export interface GetProjectVariables {
 }
 
 export const GetProject = gql`
-  query GetProject($id: String!) {
+  query GetProject($id: IDString!) {
     project(id: $id) {
       id
       ownerId

@@ -13,7 +13,7 @@ export interface GetUserProjectsVariables {
 }
 
 export const GetUserProjects = gql`
-  query GetUserProjects($userId: String!) {
+  query GetUserProjects($userId: IDString!) {
     userProjects(userId: $userId) {
       nodes {
         id

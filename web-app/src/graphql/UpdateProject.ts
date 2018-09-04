@@ -15,7 +15,7 @@ export interface UpdateProjectVariables {
 }
 
 export const UpdateProject = gql`
-  mutation UpdateProject($id: String!, $title: String!, $description: String) {
+  mutation UpdateProject($id: IDString!, $title: String!, $description: String) {
     updateProject(id: $id, title: $title, description: $description) {
       project {
         id
