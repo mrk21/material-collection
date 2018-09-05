@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import GetUserProjects, {
   GetUserProjectsQuery
 } from '../graphql/GetUserProjects'
